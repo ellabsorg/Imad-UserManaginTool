@@ -2,11 +2,12 @@ import React from "react";
 import Card from "./Card";
 
 function Cards({ data }) {
+  console.log(data);
+
   return (
     <div className="flex flex-wrap gap-4">
-      {data[0]?.map((item, index) => (
+      {data?.map((item, index) => (
         <Card key={index} user={item} />
-        // <h1>hello</h1>
       ))}
     </div>
   );

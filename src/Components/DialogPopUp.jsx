@@ -2,15 +2,17 @@ import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faL, faXmark } from "@fortawesome/free-solid-svg-icons";
 import toast, { Toaster } from "react-hot-toast";
 import Input from "./Input";
 import { useFormik } from "formik";
 import { basicSchema } from "../schemas/basicSchema";
+import { useUsersContext } from "./UserContext";
 
-export default function DialogPopUp({ fetchUsers }) {
-  let [isOpen, setIsOpen] = useState(false);
+export default function DialogPopUp() {
+  const [isOpen, setIsOpen] = useState(false);
 
+  const { fetchUsers } = useUsersContext();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -24,19 +26,20 @@ export default function DialogPopUp({ fetchUsers }) {
 
   const url = "http://localhost:5000/users";
 
-  function open() {
-    setIsOpen(true);
-  }
-
   async function AddUser() {
     try {
       const response = await axios.post(url, formik.values);
-      toast.success("User Added Successfully!");
+      console.log(response.status);
+      if (response.status === 201) {
+        console.log(response.status);
+
+        toast.success("User Added Successfully!");
+        fetchUsers();
+        setIsOpen(false);
+      }
     } catch (error) {
       toast.error(`Error: ${error}.`);
     }
-    fetchUsers();
-    setIsOpen(false);
   }
   console.log(formik.touched);
   //================================ RETURN ===================================
@@ -44,7 +47,7 @@ export default function DialogPopUp({ fetchUsers }) {
     <>
       <Toaster />
       <Button
-        onClick={open}
+        onClick={() => setIsOpen(true)}
         className="rounded-md bg-gray-100 py-4 px-8 m-5 text-xl font-medium text-gray-900 focus:outline-none hover:bg-gray-200 focus:ring focus:ring-gray-300"
       >
         Add a new user
