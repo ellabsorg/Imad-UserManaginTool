@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import { basicSchema } from "../schemas/basicSchema";
 import { useUsersContext } from "./UserContext";
 
-export default function DialogPopUp() {
+export default function AddUserPopup() {
   const [isOpen, setIsOpen] = useState(false);
 
   const { fetchUsers } = useUsersContext();
@@ -41,7 +41,6 @@ export default function DialogPopUp() {
       toast.error(`Error: ${error}.`);
     }
   }
-  console.log(formik.touched);
   //================================ RETURN ===================================
   return (
     <>

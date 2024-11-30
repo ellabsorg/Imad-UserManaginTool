@@ -1,39 +1,88 @@
 {
   "users": [
     {
+      "id": "1",
+      "name": "Amine Bensalem",
+      "email": "amine.bensalem@example.com",
+      "age": 28,
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Fatima Zohra Bouzid",
+      "email": "fatima.bouzid@example.com",
+      "age": 24,
+      "role": "editor"
+    },
+    {
       "id": "3",
-      "name": "Sam Johnson",
-      "email": "samjohnson@example.com",
+      "name": "Karim Belkacem",
+      "email": "karim.belkacem@example.com",
       "age": 35,
       "role": "viewer"
     },
     {
-      "id": "3b66",
+      "id": "4",
+      "name": "Yasmina Cherif",
+      "email": "yasmina.cherif@example.com",
+      "age": 31,
+      "role": "viewer"
+    },
+    {
+      "id": "5",
+      "name": "Rachid Meziane",
+      "email": "rachid.meziane@example.com",
+      "age": 40,
+      "role": "admin"
+    },
+    {
+      "id": "6",
+      "name": "Amina Dahmani",
+      "email": "amina.dahmani@example.com",
+      "age": 26,
+      "role": "editor"
+    },
+    {
+      "id": "7",
+      "name": "Mohamed Kamel",
+      "email": "mohamed.kamel@example.com",
+      "age": 34,
+      "role": "viewer"
+    },
+    {
+      "id": "8",
+      "name": "Lamia Boudjemaa",
+      "email": "lamia.boudjemaa@example.com",
+      "age": 29,
+      "role": "editor"
+    },
+    {
+      "id": "9",
+      "name": "Youssef Benyahia",
+      "email": "youssef.benyahia@example.com",
+      "age": 45,
+      "role": "admin"
+    },
+    {
+      "id": "10",
+      "name": "Nour El Houda Berrouane",
+      "email": "nour.berrouane@example.com",
+      "age": 27,
+      "role": "viewer"
+    },
+    {
+      "id": "720b",
       "name": "Imad",
       "email": "roulaimad19@gmail.com",
       "age": 27,
       "role": "admin"
     },
     {
-      "id": "6d9a",
-      "name": "Imad",
+      "id": "81f8",
+      "name": "Adem",
       "email": "roulaimad19@gmail.com",
       "age": 27,
-      "role": "viewer"
-    },
-    {
-      "id": "d6e3",
-      "name": "Imad",
-      "email": "roulaimad19@gmail.com",
-      "age": 27,
-      "role": "editor"
-    },
-    {
-      "id": "dcd9",
-      "name": "adem",
-      "email": "roulaimad19@gmail.comsdf",
-      "age": 27,
-      "role": "viewer"
+      "role": "admin"
     }
   ]
 }
