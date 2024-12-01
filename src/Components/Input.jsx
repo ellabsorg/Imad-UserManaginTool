@@ -22,9 +22,16 @@ export default function Input({
           placeholder={placeholder}
           onChange={handleInputChange}
           onBlur={onBlur}
-          className={`p-2 border-b-2 ml-4 ${isError? "border-[#ed921b]": "border-[#1b1fed] "} outline-none focus:outline-none focus:ring-0`}
+          className={`p-2 border-b-2 ml-4 ${
+            isError ? "border-[#ed921b]" : "border-[#1b1fed] "
+          } outline-none focus:outline-none focus:ring-0`}
         />
-        {isError && <div class="text-red-800 ml-4">{errorMessage}</div>}
+        <div
+          className={`text-red-800 ml-4`}
+          style={{ height: isError ? "auto" : "24px" }}
+        >
+          {isError && errorMessage}
+        </div>
       </div>
     </div>
   );
