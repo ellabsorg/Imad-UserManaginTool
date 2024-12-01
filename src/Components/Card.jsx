@@ -16,7 +16,7 @@ function Card({ user }) {
   } = useUsersContext();
 
   return (
-    <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+    <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-6 border border-gray-200 w-[340px] h-[230px]">
       <div className="flex justify-end gap-5 cursor-pointer">
         <div className="cursor-pointer flex justify-end">
           <FontAwesomeIcon

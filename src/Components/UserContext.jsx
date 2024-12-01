@@ -11,15 +11,10 @@ import toast from "react-hot-toast";
 import { basicSchema } from "../schemas/basicSchema";
 
 const UsersContext = createContext();
-
+const initialValues = { name: "", email: "", age: "", role: "Admin" };
 export const UsersProvider = ({ children }) => {
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      age: "",
-      role: "",
-    },
+    initialValues: initialValues,
     validationSchema: basicSchema,
     onSubmit: async () => {
       if (formActionMode === "edit") {

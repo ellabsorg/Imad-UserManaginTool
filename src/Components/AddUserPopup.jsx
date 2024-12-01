@@ -96,16 +96,6 @@ export default function AddUserPopup() {
                   errorMessage={formik.errors.age}
                   onBlur={formik.handleBlur}
                 />
-                {/* <Input
-                  name={"role"}
-                  type={"text"}
-                  value={formik.values.role}
-                  placeholder="Enter Role"
-                  handleInputChange={formik.handleChange}
-                  isError={formik.errors.role && formik.touched.role}
-                  errorMessage={formik.errors.role}
-                  onBlur={formik.handleBlur}
-                /> */}
                 <SelectComponent
                   name={"role"}
                   value={formik.values.role}

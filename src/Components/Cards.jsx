@@ -21,7 +21,7 @@ function Cards() {
   return (
     <div>
       <AddUserPopup fetchUsers={fetchUsers} />
-      <div className="flex flex-wrap items-start justify-start gap-4">
+      <div className="flex flex-wrap gap-4">
         {data?.map((item, index) => (
           <Card key={index} user={item} />
         ))}
