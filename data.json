@@ -4,15 +4,15 @@
       "id": "1",
       "name": "Amine Bensalem",
       "email": "amine.bensalem@example.com",
-      "age": 28,
-      "role": "admin"
+      "age": 40,
+      "role": "viewer"
     },
     {
       "id": "2",
       "name": "Fatima Zohra Bouzid",
       "email": "fatima.bouzid@example.com",
       "age": 24,
-      "role": "editor"
+      "role": "admin"
     },
     {
       "id": "3",
@@ -25,64 +25,15 @@
       "id": "4",
       "name": "Yasmina Cherif",
       "email": "yasmina.cherif@example.com",
-      "age": 31,
+      "age": 312,
       "role": "viewer"
     },
     {
-      "id": "5",
-      "name": "Rachid Meziane",
-      "email": "rachid.meziane@example.com",
-      "age": 40,
-      "role": "admin"
-    },
-    {
-      "id": "6",
-      "name": "Amina Dahmani",
-      "email": "amina.dahmani@example.com",
-      "age": 26,
-      "role": "editor"
-    },
-    {
-      "id": "7",
-      "name": "Mohamed Kamel",
-      "email": "mohamed.kamel@example.com",
-      "age": 34,
+      "id": "fb6e",
+      "name": "imxd",
+      "email": "roulaimad190@gmail.com",
+      "age": 9,
       "role": "viewer"
-    },
-    {
-      "id": "8",
-      "name": "Lamia Boudjemaa",
-      "email": "lamia.boudjemaa@example.com",
-      "age": 29,
-      "role": "editor"
-    },
-    {
-      "id": "9",
-      "name": "Youssef Benyahia",
-      "email": "youssef.benyahia@example.com",
-      "age": 45,
-      "role": "admin"
-    },
-    {
-      "id": "10",
-      "name": "Nour El Houda Berrouane",
-      "email": "nour.berrouane@example.com",
-      "age": 27,
-      "role": "viewer"
-    },
-    {
-      "id": "720b",
-      "name": "Imad",
-      "email": "roulaimad19@gmail.com",
-      "age": 27,
-      "role": "admin"
-    },
-    {
-      "id": "81f8",
-      "name": "Adem",
-      "email": "roulaimad19@gmail.com",
-      "age": 27,
-      "role": "admin"
     }
   ]
 }

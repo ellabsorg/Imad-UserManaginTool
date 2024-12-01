@@ -1,28 +1,43 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { useUsersContext } from "./UserContext";
 import DeleteUserPopup from "./DeleteUserPopup";
+import EditUserPopup from "./EditUserPopup";
 
 function Card({ user }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleDeleteClick = () => {
-    setIsOpen(true);
-  };
+  const {
+    isEditOpen,
+    setIsEditOpen,
+    handleDeleteClick,
+    handleEditClick,
+    isDeleteOpen,
+    setIsDeleteOpen,
+  } = useUsersContext();
 
   return (
     <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-6 border border-gray-200">
-      <div className="cursor-pointer flex justify-end">
-        <FontAwesomeIcon
-          icon={faXmark}
-          style={{ color: "#ff0000" }}
-          size="1x"
-          onClick={handleDeleteClick}
-        />
+      <div className="flex justify-end gap-5">
+        <div className="cursor-pointer flex justify-end">
+          <FontAwesomeIcon
+            icon={faTrash}
+            style={{ color: "#a80000" }}
+            size="1x"
+            onClick={() => handleDeleteClick(user)}
+          />
+        </div>
+        <div className="cursor-pointer flex justify-end">
+          <FontAwesomeIcon
+            icon={faUserPen}
+            style={{ color: "#a80000" }}
+            size="1x"
+            onClick={() => handleEditClick(user)}
+          />
+        </div>
       </div>
       <h1 className="text-xl font-semibold text-gray-800">{user.name}</h1>
-      <h2 className="text-gray-600">User Number: {user.id}</h2>
-      <h2 className="text-gray-600">Name: {user.email}</h2>
+      <h2 className="text-gray-600">ID: {user.id}</h2>
+      <h2 className="text-gray-600">Email: {user.email}</h2>
       <h2 className="text-gray-600">Age: {user.age}</h2>
       <h2
         className={`inline-block px-4 mt-5 py-2 text-white rounded-full text-sm font-semibold 
@@ -33,13 +48,6 @@ function Card({ user }) {
       >
         {user.role}
       </h2>
-      {isOpen && (
-        <DeleteUserPopup
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-          userId={user.id}
-        />
-      )}
     </div>
   );
 }

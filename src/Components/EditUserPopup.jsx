@@ -1,38 +1,23 @@
-import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Toaster } from "react-hot-toast";
+import React, { useEffect } from "react";
 import Input from "./Input";
+import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useUsersContext } from "./UserContext";
-import { useEffect } from "react";
 
-export default function AddUserPopup() {
-  const {
-    AddUser,
-    formik,
-    isAddUserOpen,
-    setIsAddUserOpen,
-    setFormActionMode,
-  } = useUsersContext();
+function EditUserPopup({ setIsEditOpen, isEditOpen }) {
+  const { formik, setFormActionMode } = useUsersContext();
   useEffect(() => {
-    setFormActionMode("add");
+    setFormActionMode("edit");
   }, []);
-  //================================ RETURN ===================================
-  return (
-    <>
-      <Toaster />
-      <Button
-        onClick={() => setIsAddUserOpen(true)}
-        className="rounded-md bg-gray-100 py-4 px-8 m-5 text-xl font-medium text-gray-900 focus:outline-none hover:bg-gray-200 focus:ring focus:ring-gray-300"
-      >
-        Add a new user
-      </Button>
 
+  return (
+    <div>
       <Dialog
-        open={isAddUserOpen}
+        open={isEditOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={AddUser}
+        onClose={() => setIsEditOpen(false)}
         __demoMode
       >
         {/* ====================POPUP ================================= */}
@@ -47,10 +32,10 @@ export default function AddUserPopup() {
                   as="h3"
                   className="text-lg font-semibold text-gray-700"
                 >
-                  Add New User
+                  Edit User
                 </DialogTitle>
                 <div
-                  onClick={() => setIsAddUserOpen(false)}
+                  onClick={() => setIsEditOpen(false)}
                   className="cursor-pointer"
                 >
                   <FontAwesomeIcon
@@ -60,6 +45,7 @@ export default function AddUserPopup() {
                   />
                 </div>
               </div>
+
               {/* =================== INPUTS ====================== */}
               <form
                 onSubmit={formik.handleSubmit}
@@ -69,7 +55,7 @@ export default function AddUserPopup() {
                   name={"name"}
                   type={"text"}
                   value={formik.values.name}
-                  placeholder="Enter Name"
+                  placeholder="Edit Name"
                   handleInputChange={formik.handleChange}
                   isError={formik.errors.name && formik.touched.name}
                   errorMessage={formik.errors.name}
@@ -79,7 +65,7 @@ export default function AddUserPopup() {
                   name={"email"}
                   type={"email"}
                   value={formik.values.email}
-                  placeholder="Enter Email"
+                  placeholder="Edit Email"
                   handleInputChange={formik.handleChange}
                   isError={formik.errors.email && formik.touched.email}
                   errorMessage={formik.errors.email}
@@ -89,7 +75,7 @@ export default function AddUserPopup() {
                   name={"age"}
                   type={"number"}
                   value={formik.values.age}
-                  placeholder="Enter Age"
+                  placeholder="Edit Age"
                   handleInputChange={formik.handleChange}
                   isError={formik.errors.age && formik.touched.age}
                   errorMessage={formik.errors.age}
@@ -99,7 +85,7 @@ export default function AddUserPopup() {
                   name={"role"}
                   type={"text"}
                   value={formik.values.role}
-                  placeholder="Enter Role"
+                  placeholder="Edit Role"
                   handleInputChange={formik.handleChange}
                   isError={formik.errors.role && formik.touched.role}
                   errorMessage={formik.errors.role}
@@ -110,7 +96,7 @@ export default function AddUserPopup() {
                     className="rounded-md bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:ring focus:ring-indigo-300"
                     type="submit"
                   >
-                    Add User
+                    Save
                   </Button>
                 </div>
               </form>
@@ -118,6 +104,8 @@ export default function AddUserPopup() {
           </div>
         </div>
       </Dialog>
-    </>
+    </div>
   );
 }
+
+export default EditUserPopup;

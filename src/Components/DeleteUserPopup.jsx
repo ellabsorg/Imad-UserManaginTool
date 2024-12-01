@@ -1,35 +1,21 @@
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import axios from "axios";
-import { useState } from "react";
 import React from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { useUsersContext } from "./UserContext";
 
-export default function DeleteUserPopup({ userId, isOpen, setIsOpen }) {
-  const { fetchUsers } = useUsersContext();
-
-  const deleteUser = async (userId) => {
-    const url = `http://localhost:5000/users/${userId}`;
-    try {
-      const response = await axios.delete(url);
-      if (response.status === 200) {
-        fetchUsers();
-        setIsOpen(false);
-        toast.success("User deleted Successfully!");
-      }
-    } catch (error) {
-      toast.error(`Error: ${error}.`);
-    }
-  };
+export default function DeleteUserPopup() {
+  const { fetchUsers, deleteUser, isDeleteOpen, setIsDeleteOpen, userId } =
+    useUsersContext();
+  console.log("WINDOW OPENED");
 
   return (
     <>
       <Toaster />
       <Dialog
-        open={isOpen}
+        open={isDeleteOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={() => setIsOpen(false)}
+        onClose={() => setIsDeleteOpen(false)}
       >
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
@@ -54,7 +40,7 @@ export default function DeleteUserPopup({ userId, isOpen, setIsOpen }) {
                 </Button>
                 <Button
                   className="inline-flex items-center gap-2 rounded-md bg-gray-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsDeleteOpen(false)}
                 >
                   Cancel
                 </Button>

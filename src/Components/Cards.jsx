@@ -2,12 +2,22 @@ import React, { useEffect } from "react";
 import Card from "./Card";
 import { useUsersContext } from "./UserContext";
 import AddUserPopup from "./AddUserPopup";
+import EditUserPopup from "./EditUserPopup";
+import DeleteUserPopup from "./DeleteUserPopup";
 
-function Cards({ data }) {
-  const { fetchUsers } = useUsersContext();
+function Cards() {
+  const {
+    fetchUsers,
+    data,
+    isEditOpen,
+    setIsEditOpen,
+    isDeleteOpen,
+    setIsDeleteOpen,
+  } = useUsersContext();
   useEffect(() => {
     fetchUsers();
   }, []);
+
   return (
     <div>
       <AddUserPopup fetchUsers={fetchUsers} />
@@ -16,6 +26,20 @@ function Cards({ data }) {
           <Card key={index} user={item} />
         ))}
       </div>
+      {isDeleteOpen && (
+        <DeleteUserPopup
+          setIsDeleteOpen={setIsDeleteOpen}
+          isDeleteOpen={isDeleteOpen}
+          formActionMode={"delete"}
+        />
+      )}
+      {isEditOpen && (
+        <EditUserPopup
+          setIsEditOpen={setIsEditOpen}
+          isEditOpen={isEditOpen}
+          formActionMode={"edit"}
+        />
+      )}
     </div>
   );
 }
