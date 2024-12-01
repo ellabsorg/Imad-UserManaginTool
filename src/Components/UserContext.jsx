@@ -83,18 +83,23 @@ export const UsersProvider = ({ children }) => {
   };
   // ================ ADD USER =============================
   async function AddUser() {
-    try {
-      const response = await axios.post(url, formik.values);
-      console.log(response.status);
-      if (response.status === 201) {
+    const response = await axios.get("http://localhost:5000/users");
+    if (response.data.some((user) => user.email === formik.values.email)) {
+      toast.error(`Email is already used`);
+    } else {
+      try {
+        const response = await axios.post(url, formik.values);
         console.log(response.status);
+        if (response.status === 201) {
+          console.log(response.status);
 
-        toast.success("User Added Successfully!");
-        fetchUsers();
-        setIsAddUserOpen(false);
+          toast.success("User Added Successfully!");
+          fetchUsers();
+          setIsAddUserOpen(false);
+        }
+      } catch (error) {
+        toast.error(`Error: ${error}.`);
       }
-    } catch (error) {
-      toast.error(`Error: ${error}.`);
     }
   }
   //==========================================================

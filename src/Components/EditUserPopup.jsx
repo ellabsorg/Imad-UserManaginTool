@@ -4,6 +4,7 @@ import Input from "./Input";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useUsersContext } from "./UserContext";
+import SelectComponent from "./SelectComponent";
 
 function EditUserPopup({ setIsEditOpen, isEditOpen }) {
   const { formik, setFormActionMode } = useUsersContext();
@@ -81,11 +82,9 @@ function EditUserPopup({ setIsEditOpen, isEditOpen }) {
                   errorMessage={formik.errors.age}
                   onBlur={formik.handleBlur}
                 />
-                <Input
+                <SelectComponent
                   name={"role"}
-                  type={"text"}
                   value={formik.values.role}
-                  placeholder="Edit Role"
                   handleInputChange={formik.handleChange}
                   isError={formik.errors.role && formik.touched.role}
                   errorMessage={formik.errors.role}

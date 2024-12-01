@@ -5,35 +5,84 @@
       "name": "Amine Bensalem",
       "email": "amine.bensalem@example.com",
       "age": 40,
-      "role": "viewer"
+      "role": "Editor"
     },
     {
       "id": "2",
       "name": "Fatima Zohra Bouzid",
       "email": "fatima.bouzid@example.com",
       "age": 24,
-      "role": "admin"
+      "role": "Admin"
     },
     {
       "id": "3",
       "name": "Karim Belkacem",
       "email": "karim.belkacem@example.com",
       "age": 35,
-      "role": "viewer"
+      "role": "Editor"
     },
     {
       "id": "4",
       "name": "Yasmina Cherif",
       "email": "yasmina.cherif@example.com",
       "age": 312,
-      "role": "viewer"
+      "role": "Viewer"
     },
     {
       "id": "fb6e",
       "name": "imxd",
       "email": "roulaimad190@gmail.com",
       "age": 9,
-      "role": "viewer"
+      "role": "Viewer"
+    },
+    {
+      "id": "218e",
+      "name": "imxd",
+      "email": "amine.bensalem@example.com",
+      "age": 27,
+      "role": "Viewer"
+    },
+    {
+      "id": "3e5b",
+      "name": "Imad",
+      "email": "roulaimad190@gmail.comsdf",
+      "age": 27,
+      "role": "Editor"
+    },
+    {
+      "id": "90a9",
+      "name": "imxd",
+      "email": "roulaimaddd19@gmail.com",
+      "age": 27,
+      "role": "Viewer"
+    },
+    {
+      "id": "9186",
+      "name": "Imxd19ddddddd",
+      "email": "roulaimadddd7@gmail.com",
+      "age": 27,
+      "role": "Editor"
+    },
+    {
+      "id": "260b",
+      "name": "imxd",
+      "email": "roulaimad19@gmail.com",
+      "age": 27,
+      "role": "Editor"
+    },
+    {
+      "id": "4291",
+      "name": "imxd",
+      "email": "roulaimad199@gmail.com",
+      "age": 27,
+      "role": "Editor"
+    },
+    {
+      "id": "2e03",
+      "name": "Imad",
+      "email": "roulaimad19@gmail.comsdfuuu",
+      "age": 27,
+      "role": "Editor"
     }
   ]
 }
