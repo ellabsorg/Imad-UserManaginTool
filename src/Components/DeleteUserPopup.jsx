@@ -1,12 +1,10 @@
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import React from "react";
-import { Toaster } from "react-hot-toast";
-import { useUsersContext } from "./UserContext";
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
-export default function DeleteUserPopup() {
-  const { fetchUsers, deleteUser, isDeleteOpen, setIsDeleteOpen, userId } =
-    useUsersContext();
-  console.log("WINDOW OPENED");
+export default function DeleteUserPopup({ userId, onClose, isDeleteOpen, onDelete }) {
+  //====================== DELETE USER =========================
 
   return (
     <>
@@ -15,7 +13,7 @@ export default function DeleteUserPopup() {
         open={isDeleteOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={() => setIsDeleteOpen(false)}
+        onClose={onClose}
       >
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
@@ -32,15 +30,13 @@ export default function DeleteUserPopup() {
               <div className="mt-4 flex gap-6 ">
                 <Button
                   className="inline-flex items-center gap-2 rounded-md bg-red-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-red-700 focus:ring-2 focus:ring-red-500"
-                  onClick={() => {
-                    deleteUser(userId);
-                  }}
+                  onClick={onDelete}
                 >
                   Yes, Delete
                 </Button>
                 <Button
                   className="inline-flex items-center gap-2 rounded-md bg-gray-600 py-1.5 px-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
-                  onClick={() => setIsDeleteOpen(false)}
+                  onClick={onClose}
                 >
                   Cancel
                 </Button>

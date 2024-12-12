@@ -1,20 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Amar Ait Kaci",
-      "email": "amar.aitkaci@example.com",
-      "age": 29,
-      "role": "Viewer"
-    },
-    {
-      "id": "2",
-      "name": "Nassim Bahloul",
-      "email": "nassim.bahloul@example.com",
-      "age": 34,
-      "role": "Admin"
-    },
-    {
       "id": "3",
       "name": "Hana Mezhoud",
       "email": "hana.mezhoud@example.com",
@@ -22,25 +8,11 @@
       "role": "Admin"
     },
     {
-      "id": "4",
-      "name": "Rachid Hamdi",
-      "email": "rachid.hamdi@example.com",
-      "age": 41,
-      "role": "Viewer"
-    },
-    {
       "id": "5",
       "name": "Sabrina Boudjemaa",
       "email": "sabrina.boudjemaa@example.com",
       "age": 30,
       "role": "Editor"
-    },
-    {
-      "id": "6",
-      "name": "Walid Chikhi",
-      "email": "walid.chikhi@example.com",
-      "age": 25,
-      "role": "Admin"
     },
     {
       "id": "7",
@@ -85,24 +57,17 @@
       "role": "Editor"
     },
     {
-      "id": "13",
-      "name": "Selma Boudiaf",
-      "email": "selma.boudiaf@example.com",
-      "age": 78,
+      "id": "c7c0",
+      "name": "imxd",
+      "email": "roula.imed",
+      "age": 27,
       "role": "Editor"
     },
     {
-      "id": "0157",
-      "name": "d",
-      "email": "roulaimad19@gmail.comsdf",
-      "age": 1,
-      "role": "Viewer"
-    },
-    {
-      "id": "6049",
-      "name": "",
-      "email": "",
-      "age": "",
+      "id": "62f1",
+      "name": "Adem",
+      "email": "roulaimadddd7@gmail.com",
+      "age": 27,
       "role": "Admin"
     }
   ]

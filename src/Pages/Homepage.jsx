@@ -3,7 +3,7 @@ import Cards from "../Components/Cards";
 
 function Homepage() {
   return (
-    <div className="bg-gray-950 h-screen w-screen">
+    <div className="bg-gray-950 ">
       <Cards />
     </div>
   );

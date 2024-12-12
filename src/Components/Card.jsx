@@ -1,20 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
-import { useUsersContext } from "./UserContext";
-import DeleteUserPopup from "./DeleteUserPopup";
-import EditUserPopup from "./EditUserPopup";
 
-function Card({ user }) {
-  const {
-    isEditOpen,
-    setIsEditOpen,
-    handleDeleteClick,
-    handleEditClick,
-    isDeleteOpen,
-    setIsDeleteOpen,
-  } = useUsersContext();
-
+function Card({ user, handleDeleteClick, handleEditClick }) {
   return (
     <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-6 border border-gray-200 w-[340px] h-[230px]">
       <div className="flex justify-end gap-5 cursor-pointer">

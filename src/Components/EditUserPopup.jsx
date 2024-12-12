@@ -3,14 +3,10 @@ import React, { useEffect } from "react";
 import Input from "./Input";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useUsersContext } from "./UserContext";
 import SelectComponent from "./SelectComponent";
 
-function EditUserPopup({ setIsEditOpen, isEditOpen }) {
-  const { formik, setFormActionMode } = useUsersContext();
-  useEffect(() => {
-    setFormActionMode("edit");
-  }, []);
+function EditUserPopup({ setIsEditOpen, isEditOpen, formik, onClose }) {
+  const url = "http://localhost:5000/users";
 
   return (
     <div>
@@ -18,7 +14,7 @@ function EditUserPopup({ setIsEditOpen, isEditOpen }) {
         open={isEditOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={() => setIsEditOpen(false)}
+        onClose={onClose}
         __demoMode
       >
         {/* ====================POPUP ================================= */}
@@ -35,10 +31,7 @@ function EditUserPopup({ setIsEditOpen, isEditOpen }) {
                 >
                   Edit User
                 </DialogTitle>
-                <div
-                  onClick={() => setIsEditOpen(false)}
-                  className="cursor-pointer"
-                >
+                <div onClick={onClose} className="cursor-pointer">
                   <FontAwesomeIcon
                     icon={faXmark}
                     style={{ color: "#ff0000" }}

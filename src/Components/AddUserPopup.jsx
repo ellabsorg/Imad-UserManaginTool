@@ -3,37 +3,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Toaster } from "react-hot-toast";
 import Input from "./Input";
-import { useUsersContext } from "./UserContext";
-import { useEffect } from "react";
 import SelectComponent from "./SelectComponent";
+import { useEffect } from "react";
 
-export default function AddUserPopup() {
-  const {
-    AddUser,
-    formik,
-    isAddUserOpen,
-    setIsAddUserOpen,
-    setFormActionMode,
-  } = useUsersContext();
+export default function AddUserPopup({ AddUser, isOpen, onClose, formik }) {
   useEffect(() => {
-    setFormActionMode("add");
-  }, []);
-  //================================ RETURN ===================================
+    formik.resetForm();
+  }, [isOpen]);
+
   return (
     <>
       <Toaster />
-      <Button
-        onClick={() => setIsAddUserOpen(true)}
-        className="rounded-md bg-gray-100 py-4 px-8 m-5 text-xl font-medium text-gray-900 focus:outline-none hover:bg-gray-200 focus:ring focus:ring-gray-300"
-      >
-        Add a new user
-      </Button>
-
       <Dialog
-        open={isAddUserOpen}
+        open={isOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={AddUser}
+        onClose={onClose}
         __demoMode
       >
         {/* ====================POPUP ================================= */}
@@ -50,10 +35,7 @@ export default function AddUserPopup() {
                 >
                   Add New User
                 </DialogTitle>
-                <div
-                  onClick={() => setIsAddUserOpen(false)}
-                  className="cursor-pointer"
-                >
+                <div onClick={onClose} className="cursor-pointer">
                   <FontAwesomeIcon
                     icon={faXmark}
                     style={{ color: "#ff0000" }}
