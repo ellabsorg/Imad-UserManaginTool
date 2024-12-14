@@ -34,41 +34,6 @@
       "email": "sofia.zitouni@example.com",
       "age": 22,
       "role": "Editor"
-    },
-    {
-      "id": "10",
-      "name": "Ahmed Reda Boualem",
-      "email": "ahmedreda.boualem@example.com",
-      "age": 39,
-      "role": "Admin"
-    },
-    {
-      "id": "11",
-      "name": "Rym Djemai",
-      "email": "rym.djemai@example.com",
-      "age": 28,
-      "role": "Viewer"
-    },
-    {
-      "id": "12",
-      "name": "Mohamed Louanes",
-      "email": "mohamed.louanes@example.com",
-      "age": 32,
-      "role": "Viewer"
-    },
-    {
-      "id": "9621",
-      "name": "Adem",
-      "email": "roulaimad19@gmail.comsdf",
-      "age": 27,
-      "role": "Admin"
-    },
-    {
-      "id": "4660",
-      "name": "Imad",
-      "email": "roulaimad19@gmail.coyyydf",
-      "age": 273,
-      "role": "Editor"
     }
   ]
 }

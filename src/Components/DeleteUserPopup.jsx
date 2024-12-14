@@ -3,9 +3,7 @@ import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-export default function DeleteUserPopup({ userId, onClose, isDeleteOpen, onDelete }) {
-  //====================== DELETE USER =========================
-
+export default function DeleteUserPopup({ onClose, isDeleteOpen, onDelete }) {
   return (
     <>
       <Toaster />

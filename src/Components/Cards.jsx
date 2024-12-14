@@ -9,12 +9,11 @@ import { useFormik } from "formik";
 import { basicSchema } from "../schemas/basicSchema";
 import toast from "react-hot-toast";
 import useFetchData from "../Hooks/useFetchData";
-import { QueryClient, useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 function Cards() {
   const [isAddUserOpen, setIsAddUserOpen] = useState(false);
   const [userId, setUserId] = useState();
-  const [formActionMode, setFormActionMode] = useState("");
   // ===================== EDIT USER ======================
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [dataToEdit, setDataToEdit] = useState({});
@@ -31,25 +30,25 @@ function Cards() {
     validationSchema: basicSchema,
     onSubmit: async () => {
       if (userId) {
-        await EditUser(userId);
+        await EditUserMutation.mutate(userId);
       } else {
         addUserMutation.mutate(formik.values);
       }
     },
   });
 
-  // ================ ADD USER =============================
-
+  // ================ ADD USER Mutation =============================
   const addUserMutation = useMutation(
     async (newUser) => {
-      const response = await axios.get("http://localhost:5000/users");
-      if (response.data.some((user) => user.email === newUser.email)) {
+      const existingUsers = await axios.get("http://localhost:5000/users");
+      if (existingUsers.data.some((user) => user.email === newUser.email)) {
         toast.error(`Email is already used`);
       } else {
         const response = await axios.post(
           "http://localhost:5000/users",
           newUser
         );
+        return response.data;
       }
     },
     {
@@ -64,28 +63,50 @@ function Cards() {
     }
   );
 
-  const handleEditClick = (user) => {
-    formik.setValues(user);
-    setUserId(user.id);
-  };
-
-  async function EditUser(userId) {
-    try {
+  // ================ Edit USER Mutation =======================
+  const EditUserMutation = useMutation(
+    async (userId) => {
       const response = await axios.put(
         `http://localhost:5000/users/${userId}`,
         formik.values
       );
       setDataToEdit(response.data);
-      if (response.status === 200) {
+    },
+    {
+      onSuccess: () => {
         toast.success("User Edited Successfully!");
-        refetch();
+        queryClient.invalidateQueries(["users"]);
         setUserId(null);
-      }
-    } catch (error) {
-      console.error("Error Editing users:", error);
-      toast.error(`Error: ${error}.`);
+      },
+      onError: (error) => {
+        toast.error(`Error: ${error}`);
+      },
     }
-  }
+  );
+  // ================ Delete USER Mutation =======================
+  const deleteUserMutation = useMutation(
+    async (userId) => {
+      const url = `http://localhost:5000/users/${deleteUserId}`;
+      const response = await axios.delete(url);
+    },
+    {
+      onSuccess: () => {
+        setDeleteUserId(null);
+        toast.success("User Deleted Successfully!");
+        queryClient.invalidateQueries(["users"]);
+        setUserId(null);
+      },
+      onError: (error) => {
+        toast.error(`Error: ${error}`);
+      },
+    }
+  );
+  //============================================================
+
+  const handleEditClick = (user) => {
+    formik.setValues(user);
+    setUserId(user.id);
+  };
   const handleDeleteClick = (user) => {
     setDeleteUserId(user.id);
   };
@@ -97,20 +118,6 @@ function Cards() {
 
   const onEditUserPopupClose = () => {
     setUserId(null);
-  };
-
-  const onUserDelete = async (userId) => {
-    const url = `http://localhost:5000/users/${deleteUserId}`;
-    try {
-      const response = await axios.delete(url);
-      if (response.status === 200) {
-        refetch();
-        setDeleteUserId(null);
-        toast.success("User deleted Successfully!");
-      }
-    } catch (error) {
-      toast.error(`Error: ${error}.`);
-    }
   };
 
   const onDeleteUserPopupClose = () => {
@@ -145,7 +152,7 @@ function Cards() {
         <DeleteUserPopup
           onClose={onDeleteUserPopupClose}
           isDeleteOpen={Boolean(deleteUserId)}
-          onDelete={onUserDelete}
+          onDelete={deleteUserMutation.mutate}
         />
       )}
 
