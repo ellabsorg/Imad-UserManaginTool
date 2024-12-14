@@ -6,7 +6,7 @@ import Input from "./Input";
 import SelectComponent from "./SelectComponent";
 import { useEffect } from "react";
 
-export default function AddUserPopup({ AddUser, isOpen, onClose, formik }) {
+export default function AddUserPopup({ isOpen, onClose, formik }) {
   useEffect(() => {
     formik.resetForm();
   }, [isOpen]);

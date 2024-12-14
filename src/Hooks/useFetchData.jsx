@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 const useFetchData = (url) => {
   const fetchUsers = async () => {
@@ -12,7 +11,7 @@ const useFetchData = (url) => {
     fetchUsers
   );
 
-  return { data, isLoading, isError, error, refetch: fetchUsers };
+  return { data, isLoading, isError, error, refetch };
 };
 
 export default useFetchData;

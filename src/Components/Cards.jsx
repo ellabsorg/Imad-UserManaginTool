@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import { basicSchema } from "../schemas/basicSchema";
 import toast from "react-hot-toast";
 import useFetchData from "../Hooks/useFetchData";
+import { QueryClient, useMutation, useQueryClient } from "react-query";
 
 function Cards() {
   const [isAddUserOpen, setIsAddUserOpen] = useState(false);
@@ -18,6 +19,7 @@ function Cards() {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [dataToEdit, setDataToEdit] = useState({});
   const [deleteUserId, setDeleteUserId] = useState(null);
+  const queryClient = useQueryClient();
 
   const { data, isLoading, isError, error, refetch } = useFetchData(
     "http://localhost:5000/users"
@@ -31,32 +33,37 @@ function Cards() {
       if (userId) {
         await EditUser(userId);
       } else {
-        await AddUser();
+        addUserMutation.mutate(formik.values);
       }
     },
   });
 
   // ================ ADD USER =============================
-  async function AddUser() {
-    const response = await axios.get("http://localhost:5000/users");
-    if (response.data.some((user) => user.email === formik.values.email)) {
-      toast.error(`Email is already used`);
-    } else {
-      try {
+
+  const addUserMutation = useMutation(
+    async (newUser) => {
+      const response = await axios.get("http://localhost:5000/users");
+      if (response.data.some((user) => user.email === newUser.email)) {
+        toast.error(`Email is already used`);
+      } else {
         const response = await axios.post(
           "http://localhost:5000/users",
-          formik.values
+          newUser
         );
-        if (response.status === 201) {
-          toast.success("User Added Successfully!");
-          refetch();
-          setIsAddUserOpen(false);
-        }
-      } catch (error) {
-        toast.error(`Error: ${error}.`);
       }
+    },
+    {
+      onSuccess: () => {
+        toast.success("User Added Successfully!");
+        queryClient.invalidateQueries(["users"]);
+        setIsAddUserOpen(false);
+      },
+      onError: (error) => {
+        toast.error(`Error: ${error}`);
+      },
     }
-  }
+  );
+
   const handleEditClick = (user) => {
     formik.setValues(user);
     setUserId(user.id);
@@ -143,7 +150,6 @@ function Cards() {
       )}
 
       <AddUserPopup
-        AddUser={AddUser}
         fetchUsers={refetch}
         isOpen={isAddUserOpen}
         onClose={onAddUserPopupClose}
